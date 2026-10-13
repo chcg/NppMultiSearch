@@ -1,5 +1,7 @@
 ﻿# Multi-Search para Notepad++
 
+> **Notepad++ plugin (x64):** search several words that match on the **same line** (must contain / must not contain / any of), in the current document or in a folder of log files, with a results panel, jump-to-line and per-value counts. Requires 64-bit Notepad++ and .NET Framework 4.8. Download: see [Releases](https://github.com/NachoMarengo/NppMultiSearch/releases).
+
 Plugin de Notepad++ (64 bits) para buscar **varias palabras que coincidan en una misma línea** — debe contener / no debe contener / alguno de —, en el documento actual o en una carpeta de trazas, con panel de resultados, salto a la línea y conteo de valores.
 
 Para usuarios: ver `installer\LEEME.txt` (se incluye en el paquete).
