@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
+    <Platforms>x64</Platforms>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <AssemblyName>NppMultiSearch</AssemblyName>
+    <RootNamespace>NppMultiSearch.Plugin</RootNamespace>
+    <Version>0.1.0</Version>
+    <Company>NachoMarengo</Company>
+    <Product>Notepad++ Multi-Search</Product>
+    <Authors>NachoMarengo</Authors>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- El mismo motor que se prueba desde la consola (tools/SearchCli) -->
+    <Compile Include="..\Core\*.cs" LinkBase="Core" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Solo para restaurar el paquete y localizar DllExport.dll (el atributo [DllExport]) -->
+    <PackageReference Include="DllExport" Version="1.7.4" ExcludeAssets="all" GeneratePathProperty="true" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="DllExport">
+      <HintPath>$(PkgDllExport)\tools\raw\lib\net20\DllExport.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <!-- La exportacion de funciones nativas la hace build.ps1 despues (tools\export.proj, MSBuild de .NET Framework) -->
+
+</Project>

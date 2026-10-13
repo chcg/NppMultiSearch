@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Paso de exportacion: convierte los metodos [DllExport] de una DLL ya compilada en funciones nativas.
+  Se ejecuta con el MSBuild de .NET Framework 4 (el de "dotnet" no puede cargar la tarea de DllExport).
+  Uso: MSBuild.exe export.proj /p:InputDll=ruta\Plugin.dll /p:Pkg=ruta\paquete\dllexport\1.7.4
+-->
+<Project DefaultTargets="DllExportMod" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <PlatformTarget>x64</PlatformTarget>
+    <TargetPath>$(InputDll)</TargetPath>
+    <DllExportOurILAsm>true</DllExportOurILAsm>
+    <DllExportRootPkg>$(Pkg)\</DllExportRootPkg>
+    <DllExportMetaLibFullPath>$(Pkg)\tools\raw\lib\net20\DllExport.dll</DllExportMetaLibFullPath>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)DllExport.ns.props" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(Pkg)\tools\net.r_eg.DllExport.targets" />
+
+</Project>

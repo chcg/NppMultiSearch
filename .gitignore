@@ -1,0 +1,7 @@
+bin/
+obj/
+dist/
+spike/out/
+*.user
+.vs/
+.test/

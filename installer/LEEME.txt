@@ -1,0 +1,26 @@
+﻿MULTI-SEARCH PARA NOTEPAD++
+=======================================
+
+Busca varias palabras que coincidan en una MISMA linea, en el documento actual o en una carpeta de trazas.
+
+INSTALACION
+1. Cierra Notepad++.
+2. Ejecuta instalar.bat  (si Notepad++ esta en Archivos de programa: clic derecho > Ejecutar como administrador).
+3. Abre Notepad++ y entra en el menu  Complementos > Multi-Search.
+
+Requisitos: Notepad++ de 64 bits y .NET Framework 4.8 (viene con Windows 10/11).
+
+USO  (atajo por defecto: Ctrl+Alt+M)
+- Cada fila es una condicion sobre la linea:
+    Debe contener     -> la linea tiene que incluir el texto  (todas las filas "debe" se cumplen a la vez)
+    No debe contener  -> la linea no puede incluir el texto
+    Alguno de         -> basta con que la linea incluya uno de los textos marcados asi
+- El orden de las palabras en la linea no importa.
+- "Buscar en": documento actual (tal como esta en el editor, guardado o no) o una carpeta con filtros (*.log;*.txt).
+- Doble clic en un resultado abre el archivo en esa linea.
+- "Contar por": regex con un grupo para contar cuantas veces aparece cada valor en las lineas encontradas.
+    Ejemplo:  MOVIL[=: ]*(\w+)   -> pestana "Conteo por valor".
+- Ctrl+C copia las lineas seleccionadas; clic derecho para copiar todas.
+- El atajo se puede cambiar en Configuracion > Asignacion de atajos > Plugin commands.
+
+DESINSTALAR: borra la carpeta  plugins\NppMultiSearch  de Notepad++.
