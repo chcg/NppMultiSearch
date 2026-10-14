@@ -25,23 +25,14 @@ jobs:
       run: |
            .\build.ps1
 
-    - uses: devops-actions/action-get-tag@v1.0.5
-      id: tagName
-      with:
-        default: v0.0.0 # Optional: Default version when tag not found
-
-    - name: zip artifacts for Release ${{ matrix.build_platform }}
-      run: |
-           7z a ${{ env.Projectname }}_${{ steps.tagName.outputs.tag }}_${{ matrix.build_platform }}.zip .\dist\NppMultiSearch\${{ env.Projectname }}.dll
-
     - name: Archive artifacts for Release ${{ matrix.build_platform }}
       uses: actions/upload-artifact@v7
       with:
-        name: ${{ env.Projectname }}_${{ steps.tagName.outputs.tag }}_${{ matrix.build_platform }}.zip
-        path: ${{ env.Projectname }}_${{ steps.tagName.outputs.tag }}_${{ matrix.build_platform }}.zip
+        path: ./dist/${{ env.Projectname }}_**_${{ matrix.build_platform }}.zip
+        archive: false
 
     - name: Create release on tagging
       uses: softprops/action-gh-release@v3
       if: startsWith(github.ref, 'refs/tags/')
       with:
-        files: ${{ env.Projectname }}_${{ steps.tagName.outputs.tag }}_${{ matrix.build_platform }}.zip
+        files: ${{ env.Projectname }}_**_${{ matrix.build_platform }}.zip
